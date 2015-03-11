@@ -1,0 +1,373 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf320
+{\fonttbl\f0\fnil\fcharset0 TeXGyreAdventor-Regular;\f1\froman\fcharset0 Times-Roman;\f2\fswiss\fcharset0 ArialMT;
+\f3\fswiss\fcharset0 Helvetica;\f4\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;\red59\green0\blue164;\red3\green30\blue101;\red164\green8\blue0;
+\red128\green0\blue197;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww21240\viewh10600\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\b\fs74 \cf0 TODO
+\fs30 \
+-should we cite 
+\f1\b0\fs26 We make use of the public Millennium Simulations Database2 (Lemson & Virgo Consortium 2006) to obtain the properties of the galaxies predicted by the two mod- els.
+\fs24 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\b\fs30 \cf0 -we should refer less to the sweet spot, and more to the cosmological regime\
+-ask Alicia:  
+\b0 last sentence in secont to last paragraph in "comparison"
+\b \
+			 
+\b0 inverse h in 685\
+			 the sentence after "orphans"
+\b 	\
+\
+\
+\
+\
+MILLENNIUM SIMULATION INFO\
+
+\b0 * The simulation starts at z=127
+\b \
+\
+COUNTS ON FONT2008a:\
+\
+Average halo mass at z = 0\
+
+\b0 select avg(mhalo) from dgalaxies..font2008a where snapnum=63\
+5.1098691E13  (font2008a)
+\b \
+\
+N galaxies at z = 0 (snapnum=63):
+\b0 \
+select count(galaxyid) from dgalaxies..font2008a where snapnum=63\
+
+\b 24530400
+\b0  (font2008a)\
+\
+select count(galaxyid) from dgalaxies..font2008a where mhalo>73e10 and snapnum=63\
+
+\b 12761008
+\b0  (font2008a with mhalo>73e10), confirmed by getting the actual data\
+\
+select count(galaxyid) from guo2010a..mr and snapnum=63\
+
+\b 25950585
+\b0  (guo2010a), confirmed by getting the actual data\
+\
+select count(galaxyid) from guo2010a..mr where centralmvir>73 and snapnum=63\
+not working don't know why, but getting the lines and counting them, I obtain\
+
+\b 8741138
+\b0 \
+\
+select count(galaxyid) from guo2010a..mr where mvir>73 and snapnum=63\
+\pard\pardeftab720
+
+\b \cf0 663541
+\b0   this works, and is very small!\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \
+\
+
+\b N galaxies at z = 1.504 (snapnum=36):
+\b0 \
+select count(galaxyid) from dgalaxies..font2008a where snapnum=36\
+
+\b 25920714
+\b0  (font2008)\
+\
+select count(galaxyid) from guo2010a..mr and snapnum=36\
+
+\b 25021639
+\b0  (guo2010a), confirmed by getting the actual data\
+\
+select count(galaxyid) from dgalaxies..font2008a where mhalo>73e10 and snapnum=3\
+
+\b 6095704
+\b0  (font2008a with mhalo>73e10), confirmed by getting the actual data\
+\
+select count(galaxyid) from guo2010a..mr where centralmvir>73 and snapnum=36\
+not working don't know why, but getting the lines and counting them, I obtain\
+
+\b 5054957
+\b0 \
+
+\b \
+\
+\
+QUERIES GUO2010a
+\b0 \
+select top 10 galaxyid,centralmvir from guo2010a..mr where centralmvir>73 and snapnum=63\
+\
+* Query including other quantities than xyzvxvyvz\
+select top 10 galaxyid,x,y,z,velX,velY,velZ,type,np,mvir,stellarMass,r_mag,rDust from guo2010a..mr where snapnum=63\
+\
+
+\b QUERIES Font2008a
+\b0 \
+select top 10 galaxyid,mhalo from dgalaxies..font2008a where mhalo>73e10 and snapnum=63\
+\
+\
+
+\b GUO 2010a MODEL INFO
+\b0 \
+Omega_m\
+0.25\
+Omega_b\
+0.045\
+Omega_L\
+0.75\
+sigma_8\
+0.9\
+n_spectral=1\
+H at z=0\
+73 km/s/Mpc\
+h = 0.73\
+H at z=1.504\
+215.8 h\
+\
+* Number of type 0 galaxies, i.e. galaxies that are the centre of their FOF group:\
+
+\b 15494624\
+
+\b0 * Number of type 1 galaxies, i.e. galaxies that were type 0 and merged into a bigger FOF group.  They stay type 1 until they enter the virial radius of newly formed FOF\
+
+\b 2432752
+\b0 \
+* Number of type 2 galaxies, i.e. galaxies that are 'orphans' in the sense that they are not at centre of any subhalo.  Remember that for Guo2010, a subhalo is a FOF group that recently merged into a more massive FOF.\
+
+\b 8023209
+\b0 \
+
+\b \
+SPHERICAL COLLAPSE TOP HAT MODEL\
+from {\field{\*\fldinst{HYPERLINK "http://arxiv.org/pdf/1110.6205v1"}}{\fldrslt http://arxiv.org/pdf/1110.6205v1}}\
+\
+SQL QUERIES\
+
+\b0 * check whether guo2010.np corresponds to the subhalo mass\
+\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\i\b\fs58 \cf2 THEORY
+\i0\b0\fs30 \cf0 \
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b \cf0 A lot of useful infomation can be found here:\
+
+\b0 http://galaxy-catalogue.dur.ac.uk:8080/MyMillennium/Help?page=durhamtrees\
+http://galaxy-catalogue.dur.ac.uk:8080/MyMillennium/Help?page=mpatrees\
+\
+
+\b NOTE
+\b0 :  D stands for Durham  (DHalo),  M stands for MPA (MHalo)\
+\
+\pard\pardeftab720\sa280
+
+\f2\b\fs68 \cf3 1)
+\fs42   2.2.2\'a0\'a0:\'a0\'a0SAM at Durham: The Bower et al Model\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\i\b0\fs30 \cf0 from http://galaxy-catalogue.dur.ac.uk:8080/MyMillennium/Help?page=durhamtrees\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f2\i0\b\fs42 \cf3 \
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat1 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15000\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt100 \clpadl100 \clpadb100 \clpadr100 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sa280
+
+\fs34 \cf0 Halos and Merger Trees\
+\pard\intbl\itap1\pardeftab720\sa240
+
+\b0\fs24 \cf0 The halo merger trees for the Bower et al model are contained in the DHalo and DSubhalo tables. The merger trees are built using the Friends of Friends (b=0.2) groups output by L-Gadget2 and the subgroups identified by SubFind. In the description below 'subhalo' means a set of particles grouped together by SubFind, which looks for gravitationally bound local density maxima. A 'halo' is a collection of subhalos grouped together in the following way:\
+Initially subhalos are grouped into halos by looking at the FoF groups - a halo just consists of all the subhalos belonging to one FoF group. Particles in the FoF group which do not belong to any subhalo are discarded. Note that SubFind identifies the background mass distribution of the halo as a separate subhalo, so each halo will normally contain one large subhalo (with most of the mass of the halo) and a set of smaller "satellite" subhalos.\
+The Friends of Friends algorithm often links together objects which should probably be treated as separate halos as far as the merger trees are concerned. So under certain conditions a subgroup may be split from its parent halo and considered to be a halo in its own right. This is done if 1) the subhalo is outside twice the half mass radius of the parent halo or 2) the subhalo has retained 75% of the mass it had at the last output time where it was an independant halo. This second condition is based on the assumption that a halo which has fallen into a more massive halo will rapidly be stripped of its outer layers, whereas a halo which has been artificially linked to another halo will retain its mass. When a subhalo is split off, any less massive subhalos within twice its half mass radius are also split off and become part of the new halo.\
+The descendant of a subhalo is found by following the most bound 10% of its mass or the 10 most bound particles, whichever is the greater mass. The descendant is the subhalo which contains the largest number of these particles. The descendant of a halo is the halo which contains the descendant of the most massive subhalo in the halo.\
+We refer to the halos defined in this way as "DHalo"s to differentiate them from the halos used in the Munich version of the merger trees.\
+
+\i\b \cf4 WARNING: there is rather conflicting terminology between the two versions of the merger trees. The bound groups of particles identified by SubFind are refered to as subhalos in the Durham version of the merger trees described here, but are referred to as halos in the Munich version.\
+\pard\intbl\itap1\pardeftab720\sa280
+
+\i0\fs34 \cf0 Galaxies\
+\pard\intbl\itap1\pardeftab720\sa240
+
+\b0\fs24 \cf0 The galaxy catalogues are stored in the DGalaxy table. They were produced by using the GALFORM semi-analytic code to populate the N-body halos from the Millennium simulation with galaxies. The galaxy formation model is decsribed in detail in the {\field{\*\fldinst{HYPERLINK "http://xxx.soton.ac.uk/abs/astro-ph/0511338"}}{\fldrslt \cf5 Bower et al (2006)}} paper. The properties available for each galaxy include position, velocity, stellar mass and magnitudes in various bands.\
+Within a single galaxy merger tree, the galaxies in the DGalaxy table are assigned ID numbers in depth first order so that all progenitors of a particular galaxy may be easily located. The ID of the descendant of each galaxy is also provided.\cell \lastrow\row
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs30 \cf0 \
+\
+\pard\pardeftab720\sa280
+
+\f2\b\fs68 \cf3 2) 
+\fs42 2.2.1\'a0\'a0:\'a0\'a0SAM at MPA: L-Galaxies\
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat1 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15000\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt100 \clpadl100 \clpadb100 \clpadr100 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sa240
+
+\b0\fs24 \cf0 The merger tree structure of halos extracted from the raw simulaiton results, is used as the skeleton for semi-analytical models (SAMs) of galaxy formation, from which synthetic galaxy catalogues are constructed. Here the SAGF algorithm is described in terms of the actual, file-based, simulation products.\uc0\u8232 (This description is extracted from private communication from Volker Springel.)\
+\pard\intbl\itap1\pardeftab720
+\cf0 \
+\pard\intbl\itap1\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f3 \cf0 {{\NeXTGraphic mergertree.jpg \width2880 \height3686
+}¬}\pard\intbl\itap1\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f2 \cf0   (double click the image)\
+\pard\intbl\itap1\pardeftab720\sa240
+\cf0 \
+The postprocessing of the Millennium simulation data proceeds in several stages. The first step is the determination of friends-of-friends (FOF) groups, which is done by the simulation code itself. The second step involves running an algorithm that decomposes each FOF group in a set of gravitationally bound (sub)halos and determines physical properties for them. These halos are the actual objects that are then used to construct merging trees.\
+The merger tree construction itself involves two steps. The first step is a determination of a descendant halo for each halo. The descendant always lies in the future, in >99.9% of the cases in the subsequent output, but in certain situations, an output may also be skipped. The descendant information already uniquely defines the merger tree of the whole simulation. However, in order to simplify further processing, the merger tree is reorganized in a further step such that distinct pieces of the tree (corresponding to merger trees of halos found at the final time) are stored separately, in a form that makes it convenient to walk these trees. These trees also contain all the physical properties of the corresponding halos, such that they form the only input required to run the semi-analytic galaxy formation code on them.\
+The construction of the galaxies is done by walking the merger tree more or less in a depth-first fashion by calling the function
+\f4 construct_galaxies()
+\f2  recursively. This function forms the backbone of the program. It first constructs the galaxies of all the progentitors of the present halo. These galaxies are then combined (
+\f4 join_galaxies_of_progenitors()
+\f2 )and evolved forward in time by the function
+\f4 evolve_galaxies()
+\f2 , such that once the function finishes, we will have obtained the galaxies for the halo that was passed as an argument. All the details of the modelling of the galaxy formation process are contained in the two functions 
+\f4 join_galaxies_of_progenitors()
+\f2  and
+\f4 evolve_galaxies()
+\f2 . The walk of the merger tree encapsulated in 
+\f4 construct_galaxies()
+\f2  should be pretty generic and essentially independent of any detail of the galaxy formation model itself.\
+\pard\intbl\itap1\pardeftab720\sa240
+
+\i\b\fs26 \cf4 Note again that in all of the above, the word "halo" refers to a generalized concept of `subhalo', i.e. physically a subhalo may represent an embedded substructure within a larger halo, or a `background halo' that hosts substructures itself. When we follow subhalos over time it is not important to know these geometrical differences. All that matters is that each subhalo carries one or several galaxies, and that these galaxies should be associated with the descendant subhalo at the future output. So subhalos can be treated all on the same footing, and its perhaps best to think of them as a generic object, a "halo".
+\i0\b0\fs24 \cf0 \
+There is however one exception to this. Certain subhalos are given a special meaning, based on a secondary grouping criterion. This grouping makes reference to the two-stage group identification that we do: We first decompose the particle set into FOF groups, and then each FOF group is decomposed into its constituent subhalos. As explained above, the merger trees are built for the total set of subhalos found in this way, without making any reference to the FOF groups. However, in the physical modelling of galaxy formation, we use the FOF information at one place: We assume that only the biggest subhalo in a FOF group receives fresh cool gas dropping out due to radiative cooling.\
+This basically means that in our merger tree we somehow need to know which halos belong to the same FOF-group, so that we can select the biggest one of them as the "main halo" of the group - this is then the one which will receive the cooling gas.\
+The above then introduces a complication in the recursive construction of the galaxies. Because the physical model for the cooling rate of gas (needed when the galaxy population of a halo is evolved in time) starts out with an inventory of all the baryons in a given FOF-group, one needs to know the present state of all the galaxies in a given FOF group to compute this... This means that one cannot simply construct the galaxies just based on the merger tree of a given subhalo, because for working out the cooling rates, one may also need information from halos that are only linked to the present tree by a weaker relation of the form that they are part of some of the FOF halos under consideration. One therefore needs to ensure that galaxies of all halos in a given FOF group are already constructed when it comes done to computing the cooling rates.\
+The above issues are resolved by walking the tree in a slightly more complicated way, and by temporarily storing all the galaxies that have been constructed for a given halo in memory. The recursive walk to construct the galaxies is augmented by the following additional check. After we call 
+\f4 construct_galaxies()
+\f2  for all progenitors of a given halo, we check whether all the galaxies have already been constructed for the FOF group. If not, we loop over all the subhalos in the same FOF group and call 
+\f4 construct_galaxies()
+\f2  for them if they have not already been processed. That way, we are sure that before 
+\f4 join_galaxies_of_progenitors()
+\f2  is called for the present halo, the galaxies for its main halo have already been constructed.\cell \lastrow\row
+\pard\pardeftab720\sa280
+
+\f0\fs30 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \
+
+\b Subhalo
+\b0 \
+If two FOF of comparable size merge, the result will be a FOF group with two subhaloes.\
+If a small FOF group  falls into a large one (a cluster), the former will be a subhalo of the latter.  This is a 
+\b merging
+\b0 .\
+In this second case, the DM particles of the subhalo will eventually be stripped because of the potential well of the cluster.  This is an 
+\b accretion
+\b0 . There will be a point were the subhalo will be less massive than what defines a subhalo, and lose his identity.  If the subhalo was hosting a galaxy, then that will become an 'orphan', or type 2, galaxy.  This is just a definition of the simulation jargon, it is not something physical.  It just means that the subhalo cannot be followed with the required resolution anymore.\
+\
+
+\b \
+Type 0 galaxy\
+
+\b0 A galaxy at the centre of a FOF group /? the most massive galaxy in a FOF group.\
+In the hierarchical model, every galaxy was type 0 at some point.  Why?  Because you first form small dark matter FOF halos.  You populate these groups with gas, that will eventually condense in a disk (Springel et al., 2005, supplementary info, pag. 10, left column).  Star formation starts, and you have your first galaxies.  Each galaxy will correspond to a single FOF halo.  After (or during) this galaxy formation process,  these FOF haloes start to merge.  FOF groups are redefined and start to include more and more DM particles that come from different FOF haloes, that now become a single FOF halo.  As Guo 2011a says:\
+\
+\pard\pardeftab720\sa240
+
+\f1\fs34 \cf0 In the standard scenario of galaxy formation, originally proposed by White & Rees (1978), gas cools and condenses at the centres of a population of hierarchically merging DM haloes.
+\fs24 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs30 \cf0 At early times, subhaloes contain only one galaxy.  As time goes on,  and as FOF contain more than one galaxy, subhaloes end up to have more than one galaxy.\
+\
+WRONG: The subhaloes we are speaking about are effectively DM haloes of galaxies.  Why?  Can't you have two galaxies in a single subhalo? No!  You cannot, because in the hierarchical model each FOF group forms a galaxy and ten merge with something else.  This 1 galaxy - 1 subhalo structure\
+\
+During a merginWhen type 0 galaxy naturally become\
+\
+\
+\
+ It was the type 0 galaxyIn the mergingAfter a FOF merging, one of the\
+\
+\
+\
+
+\b SNAPNUM VS REDSHIFT\
+\pard\pardeftab720
+
+\f4\b0\fs24 \cf0 select snapnum,z from MField..Snapshots\
+#MAXROWS UNLIMITED\
+#QUERYTIMEOUT 420 sec\
+#DATE 2011-11-21 01:13:54.667 CET\
+#QUERYTIME 373 millisec\
+#COLUMN 1 name=snapnum JDBC_TYPE=4 JDBC_TYPENAME=int\
+#COLUMN 2 name=z JDBC_TYPE=7 JDBC_TYPENAME=real\
+snapnum,z\
+0,127.0\
+1,79.997894\
+2,49.99959\
+3,30.000063\
+4,19.91569\
+5,18.243723\
+6,16.724525\
+7,15.343074\
+8,14.085914\
+9,12.94078\
+10,11.89657\
+11,10.943864\
+12,10.073461\
+13,9.277915\
+14,8.549912\
+15,7.8832035\
+16,7.272188\
+17,6.7115865\
+18,6.1968336\
+19,5.723864\
+20,5.2888336\
+21,4.888449\
+22,4.5195556\
+23,4.1794686\
+24,3.8656828\
+25,3.575905\
+26,3.3080978\
+27,3.060419\
+28,2.8311827\
+29,2.6188614\
+30,2.422044\
+31,2.2394855\
+32,2.0700274\
+33,1.9126327\
+34,1.7663358\
+35,1.6302707\
+36,1.5036365\
+37,1.3857181\
+38,1.2758462\
+39,1.1734169\
+40,1.0778745\
+41,0.98870814\
+42,0.9054624\
+43,0.8276991\
+44,0.75503564\
+45,0.6871088\
+46,0.6235901\
+47,0.5641766\
+48,0.5085914\
+49,0.45657724\
+50,0.40789944\
+51,0.36234027\
+52,0.31970343\
+53,0.2798018\
+54,0.24246909\
+55,0.20754863\
+56,0.17489761\
+57,0.14438342\
+58,0.11588337\
+59,0.08928783\
+60,0.064493395\
+61,0.041403063\
+62,0.019932542\
+63,0.0\
+#OK\
+}
