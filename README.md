@@ -1,4 +1,4 @@
-*** DESCRIPTION ***
+## DESCRIPTION
 
 Zelda is a command-line tool to extract correlation functions in velocity
 space from a galaxy catalogue. Being modular and extendible, Zelda can
@@ -17,12 +17,12 @@ inspired by that of the cosmological Boltzmann code CLASS (http://class-code.net
 Zelda is a parallel code, via the OpenMP standard. Therefore, it can use all the
 cores in a single node, but it cannot span multiple nodes. Set the number of
 cores you want to use on the command line via the environment variable
-OMP_NUM_THREADS. For example, if you run Zelda on a laptop with 8 cores
-on a bash shell, you might want to execute 'export OMP_NUM_THREADS=8' before
+`OMP_NUM_THREADS`. For example, if you run Zelda on a laptop with 8 cores
+on a bash shell, you might want to execute `export OMP_NUM_THREADS=8` before
 running Zelda.
 
 
-*** CONTRIBUTE! ***
+## CONTRIBUTE!
 
 Zelda is now open source. The whole project is hosted on a public repository
 on Github, at the following link:
@@ -34,46 +34,46 @@ share your modifications, we are happy to make you a collaborator of
 the project, or to accept pull requests. 
 
 
-*** INSTALLATION ***
+## INSTALLATION
 
 Zelda can be installed using GNU make. Personalise the 'makefile' if
 you want to use a C compiler different from the default GCC. To compile,
 just run 'make all'.
 
-If that does not work, try first running 'make clean' and then again
-'make all'. If that does not work either, make sure that you have installed
+If that does not work, try first running `make clean` and then again
+`make all`. If that does not work either, make sure that you have installed
 the OPENMP library. If after installing OPENMP, it still does not work,
 specify the location of the OPENMP library in the makefile, for example by
 adding it to LDFLAGS using the -L flag (for example,
-LDFLAGS = -L//usr/local/lib -lgomp).
+`LDFLAGS = -L//usr/local/lib -lgomp`).
 
 If you are desperate, feel free to email us by using the contact section below :-)
 
 
-*** QUICK START ***
+## QUICK START
 
 You can test Zelda with a simple task by running
 
-./zelda params_quickstart.ini
+`./zelda params_quickstart.ini`
 
 Zelda will perform a quick computation of the pairwise velocity statistics
-from a subsample of the Millennium simulation of side 62.5 Mpc; the catalogue
+from a subsample of the Millennieum simulation of side 62.5 Mpc; the catalogue
 file is part of the package and is contained in the 'test_data' folder.
 
 The result will be stored in the Zelda directory under the name
-results_millennium_small.dat. To plot it in gnuplot, just run:
+`results_millennium_small.dat`. To plot it in gnuplot, just run:
 
-set log x
-plot "results_millennium_small.dat" u 2:4:($4-$6/sqrt($3)):($4+$6/sqrt($3)) with yerr
+    set log x
+    plot "results_millennium_small.dat" u 2:4:($4-$6/sqrt($3)):($4+$6/sqrt($3)) with yerr
 
 
-*** SHORT USER GUIDE ***
+## SHORT USER GUIDE
 
 Zelda takes as input a parameter file with a list of 'key = value' settings.
 The parameter file has to be text-only and usually has a non-mandatory .ini
 extension. For example, you could make a test run of Zelda with
 
-./zelda params_quickstart.ini
+`./zelda params_quickstart.ini`
 
 The most important file for a new user is params_explanatory.ini. It is a
 parameter file with a documented list of all the parameters in Zelda.
@@ -106,20 +106,20 @@ catalogue files.
 of Zelda.
 
 
-*** CREDITS ***
+## CREDITS
 
 We wish to thank Julien Lesgourgues, Thomas Tram and Diego Blas for creating
 CLASS! Without CLASS, Zelda would not exist as it uses the same modular structure
 and error system.
 
 
-*** CONTACT ***
+## CONTACT
 
 Please contact us if you need any help installing or running the code! Our
 contacts are:
 
-Guido Walter Pettinari (guido.pettinari@gmail.com)
-Alicia Bueno Belloso (alicia.bueno.belloso@gmail.com)
+Guido Walter Pettinari (<guido.pettinari@gmail.com>)
+Alicia Bueno Belloso (<alicia.bueno.belloso@gmail.com>)
 
 Make sure to check Zelda's repository for news and updates:
 
